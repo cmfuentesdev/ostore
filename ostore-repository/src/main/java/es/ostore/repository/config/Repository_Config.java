@@ -16,17 +16,16 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 @EnableJpaRepositories(basePackages = "es.ostore.repository", entityManagerFactoryRef = "entityManager", transactionManagerRef = "transactionManager")
 public class Repository_Config {
-
+	
 	@Bean
 	@Primary
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
-		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUsername("sa");
-		dataSource.setPassword("");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/test;AUTO_SERVER=TRUE");
-
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		dataSource.setUsername("wshopuser");
+		dataSource.setPassword("1passwd1");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/ostore?serverTimezone=UTC&createDatabaseIfNotExist=true");
 		return dataSource;
 	}
 
